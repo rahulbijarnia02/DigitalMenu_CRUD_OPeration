@@ -1,0 +1,57 @@
+@model DIgitalMenu.Entities.AddMenuDetail 
+@{ }
+<style>
+    table {
+        font-family: Arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td,
+    th {
+        border: 1px solid green;
+        text-align: center;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #F2F2F2;
+    }
+
+    img {
+        max-height: 100px;
+        max-width: 100px;
+    }
+</style>
+<div>
+    <h2>Item Details</h2>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Dish Name</th>
+            <th>Category</th>
+            <th>Type</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.DishName</td>
+            <td>@Model.Category</td>
+            <td>@Model.Type</td>
+            <td> @if (!string.IsNullOrEmpty(Model.Image))
+                {
+                    <img src="~/Uploads/@Model.Image" alt="No image found" />
+                }
+                else
+                {
+                    <span>No image found</span>
+                } </td>
+            <td>@Model.Price</td>
+            <td>@Model.Quantity</td>
+        </tr>
+    </tbody>
+</table>

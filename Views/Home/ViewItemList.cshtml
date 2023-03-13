@@ -1,0 +1,60 @@
+@model IEnumerable<DIgitalMenu.Entities.AddMenuDetail>
+@{
+
+    }
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    a {
+        color: #4CAF50;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #4CAF50;
+        text-decoration: underline;
+    }
+</style>
+
+<div>
+    <h2>User Details</h2>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Dish Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var prod in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-controller="Home" asp-action="ItemDetailPage" asp-route-Id="@prod.Id">@prod.DishName</a>
+                </td>
+                <td>
+                    <a href="Editview/@prod.Id">Edit</a>
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "DeleteDish", new { prod.Id }, new { onclick = "return confirm('Are you sure you want to delete this dish?');" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
